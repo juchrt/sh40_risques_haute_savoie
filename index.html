@@ -75,17 +75,56 @@
             }
           }
         }%%
+
+        class AléaOrigineAnthropique:::alea
+        class AléaIndustriel:::alea
+        class AléaSanitaire:::alea
+        class Pollution:::alea
+        class AléaOrigineNaturelle:::alea
+        class AléaGéomorphologique:::alea
+        %% MouvementTerrain %%
+        class GlaciairePeriglaciaire:::alea
+        %% Avalanche %%
+        class AléaGéodynamique:::alea
+        %% Séisme %%
+        class AléaHydroclimatiqueMétéorologique:::alea
+        %% Inondation %%
+        
+        class Humain:::alea
+        
         Morphodynamique --> Aléa : prédispose à
         Aléa <|-- AléaOrigineAnthropique
         Aléa <|-- AléaOrigineNaturelle
+        AléaOrigineAnthropique <|-- AléaIndustriel
+        AléaOrigineAnthropique <|-- AléaSanitaire
+        AléaOrigineNaturelle <|-- AléaGéomorphologique
+        AléaOrigineNaturelle <|-- AléaGéodynamique
+        AléaOrigineNaturelle <|-- AléaHydroclimatiqueMétéorologique
+        AléaIndustriel --> Pollution : peut causer
+        AléaSanitaire <|-- Pollution
+        AléaGéomorphologique <|-- MouvementTerrain
+        MouvementTerrain --> AléaIndustriel : peut entraîner
+        MouvementTerrain --> Morphodynamique : remodèle
+        AléaGéomorphologique <|-- GlaciairePeriglaciaire
+        AléaGéomorphologique <|-- Avalanche
+        GlaciairePeriglaciaire --> Avalanche : peut déclencher
+        Humain --> Avalanche : peut déclencher
+        AléaOrigineNaturelle --> Avalanche : peut déclencher
+        AléaHydroclimatiqueMétéorologique --> Avalanche : peut déclencher
+        AléaGéodynamique <|-- Séisme
+        Séisme --> AléaGéomorphologique : peut déclencher
+        AléaHydroclimatiqueMétéorologique <|-- Inondation
+        Inondation --> AléaHydroclimatiqueMétéorologique : entraine (facteur précipitations intenses)
+        Inondation --> Pollution : peut causer
 
         class Morphodynamique:::morphodynamique{
           + site géographique
           + pente :
           + manteau neigeux
           + bassin glaciaire : boolean
-          + type : plaine, montagne, haute montagne
-          + cours d'eau et lacs, débit montagnard, réseau hydrographique, 
+          + type : plaine, montagne, 
+            haute montagne, cours d'eau et lacs, 
+            débit montagnard, réseau hydrographique
         }
 
         class Aléa:::alea{
@@ -93,8 +132,46 @@
           + date :
         }
 
+        class AléaIndustriel:::alea{
+          + type : usine chimique
+        }
+
+        class MouvementTerrain:::alea{
+          + origine : naturelle, anthropique
+          + Variabilité du volume (qqls m3 à qqls millions de m3)
+          + Variabilité de la vitesse
+          + type_mouvement : lents et continus, rapides et discontinus
+          + degats : éboulements, chutes de blocs, affaissements de sols, 
+            coulées boueuses et torrentielles, glissements, 
+            retrait-gonflement d'argile
+        }
+
+        class Avalanche:::alea{
+          + vitesse: km/h
+          + masse: m³
+          + type: enum type_avalanche
+          + neige: enum nature_neige
+        }
+
+        class Séisme:::alea{
+          + hypocentre : localisation
+          + épicentre : localisation
+          + magnitude : échelle de Richter
+          + intensité : échelle MSK
+          + fréquence vibrations : int
+          + durée vibrations : int
+          + faille provoquée : verticale ou inclinée; 
+            propagation en surface ou non
+        }
+
+        class Inondation:::alea{
+          + type: inondations de plaine, 
+            ruissellement pluvial, crues, 
+            remontée de nappe phréatique
+        }
+
         classDef morphodynamique fill:#e1d5e7;
-        %%classDef alea fill:#dae8fc;
+        classDef alea fill:#dae8fc;
         %%classDef acteur fill:#f8cecc;
         %%classDef enjeu fill:#d5e8d4;
         %%classDef vulnérabilité fill:#f5f5f5;
