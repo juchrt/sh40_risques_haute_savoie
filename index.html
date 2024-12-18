@@ -64,6 +64,9 @@
       <pre class="mermaid">
       ---
       title: "Les aléas des paysages montagnards en cascade : quel(s) risque(s) pour les communes de la Haute-Savoie ?"
+      config:
+      class:
+        hideEmptyMembersBox: true
       ---
       
       classDiagram
@@ -77,7 +80,13 @@
           }
         }%%
 
-        
+        namespace Légende {
+          class Triangle
+          class Rectangle {
+            double width
+            double height
+          }
+        }
             
         class AléaOrigineAnthropique:::alea
         class AléaIndustriel:::alea
@@ -178,6 +187,26 @@
         Gestion <|-- GestionPostCrise
         Gestion <|-- Résilience
 
+        Prévention --> Vulnérabilité : vise à réduire
+
+        class Acteur:::acteur{
+          + id :
+          + nom : string
+          + type
+          + rôle
+        }
+
+        Acteur --> Gestion : intervient dans
+        Acteur --> Vulnérabilité : réduit
+        
+        class Vulnérabilité:::vulnerabilite
+        class VulnérabilitéPopulation:::vulnerabilite
+
+        Vulnérabilité <|-- VulnérabilitéPopulation
+
+        Vulnérabilité --> Enjeu : est une propriété de
+        Morphodynamique --> Vulnérabilité : peut accentuer
+
         class Morphodynamique:::morphodynamique{
           + site géographique
           + pente :
@@ -233,9 +262,9 @@
 
         classDef morphodynamique fill:#e1d5e7;
         classDef alea fill:#dae8fc;
-        %%classDef acteur fill:#f8cecc;
+        classDef acteur fill:#f8cecc;
         classDef enjeu fill:#d5e8d4;
-        %%classDef vulnérabilité fill:#f5f5f5;
+        classDef vulnerabilite fill:#f5f5f5;
         classDef gestion fill:#ffe6cc;
         
 
@@ -249,6 +278,10 @@
         système.
       </p>
       <h3>Retour critique</h3>
+      <p>
+        Malgré nous, les enjeux sont au centre ce qui les situent au coeur de la
+        notion du risque en Haute-Savoie
+      </p>
     </div>
 
     <!-- CARTES -->
