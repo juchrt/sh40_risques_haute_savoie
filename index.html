@@ -9,58 +9,157 @@
     />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./resources/ol.css" />
     <link rel="stylesheet" href="resources/fontawesome-all.min.css" />
     <link rel="stylesheet" href="./resources/ol-layerswitcher.css" />
     <link rel="stylesheet" href="./resources/qgis2web.css" />
-    <style>
-      html,
-      body {
-        background-color: #ffffff;
-      }
-      .ol-control > * {
-        background-color: #f8f8f8 !important;
-        color: #444444 !important;
-        border-radius: 0px;
-      }
-      .ol-attribution a,
-      .gcd-gl-input::placeholder,
-      .search-layer-input-search::placeholder {
-        color: #444444 !important;
-      }
-      .search-layer-input-search {
-        background-color: #f8f8f8 !important;
-      }
-      .ol-control > *:focus,
-      .ol-control > *:hover {
-        background-color: rgba(248, 248, 248, 0.7) !important;
-      }
-      .ol-control {
-        background-color: rgba(255, 255, 255, 0.4) !important;
-        padding: 2px !important;
-      }
-    </style>
-
-    <style>
-      html,
-      body,
-      #map {
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
     <title>haute_savoie_test_hydro_reliefs</title>
   </head>
   <body>
-    <h1>Test</h1>
-    <div id="map">
+    <!--
+      Introduction commande de l’UV enjeux du travail
+      présentation du territoire 1 paragraphe)
+
+      Modèle conceptuel modifié retour critique
+
+      Analyse des données utilisées et représentations produites
+      poster ou API cartographique simplifiée
+    -->
+
+    <nav class="navbar bg-body-tertiary" style="margin-bottom: 25px">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1 fs-3"
+          >Représentation du risque en Haute-Savoie</span
+        >
+      </div>
+    </nav>
+
+    <!-- INTRODUCTION -->
+    <div class="container">
+      <h2>Introduction</h2>
+    </div>
+
+    <!-- PROBLÉMATIQUE -->
+    <div class="container">
+      <h2>Problématique</h2>
+      <p>
+        Les aléas des paysages montagnards en cascade : quel risque pour les
+        communes de la Haute-Savoie ?
+      </p>
+    </div>
+
+    <!-- MCD -->
+    <div class="container">
+      <h2>Modèle conceptuel de données</h2>
+      <h3>La modèle</h3>
+      <pre class="mermaid">
+      ---
+      title: "Les aléas des paysages montagnards en cascade : quel(s) risque(s) pour les communes de la Haute-Savoie ?"
+      ---
+      
+      classDiagram
+        %%{
+          init: {
+            'theme': 'base',
+            'themeVariables': {
+              'primaryBorderColor': '#000000',
+              'mainBkg': 'transparent'
+            }
+          }
+        }%%
+        Morphodynamique --> Aléa : prédispose à
+        Aléa <|-- AléaOrigineAnthropique
+        Aléa <|-- AléaOrigineNaturelle
+
+        class Morphodynamique:::morphodynamique{
+          + site géographique
+          + pente :
+          + manteau neigeux
+          + bassin glaciaire : boolean
+          + type : plaine, montagne, haute montagne
+          + cours d'eau et lacs, débit montagnard, réseau hydrographique, 
+        }
+
+        class Aléa:::alea{
+          + localisation :
+          + date :
+        }
+
+        classDef morphodynamique fill:#e1d5e7;
+        %%classDef alea fill:#dae8fc;
+        %%classDef acteur fill:#f8cecc;
+        %%classDef enjeu fill:#d5e8d4;
+        %%classDef vulnérabilité fill:#f5f5f5;
+        %%classDef gestion fill:#ffe6cc;
+        
+
+    </pre
+      >
+      <h3>Retour critique</h3>
+    </div>
+
+    <!-- CARTES -->
+    <div class="container">
+      <h2>Représentations produites</h2>
+      <h3>Carte de situation</h3>
+      <p>
+        Carte situant le département en France et comparaison de l'exposition
+        aux aléas en comparaison avec le ratio de couverture en DICRIM de chaque
+        département
+      </p>
+    </div>
+    <div id="map" style="width: 75rem">
       <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"></div>
       </div>
     </div>
+    <div class="container">
+      <p>
+        Conclusion : caractéristiques clefs du territoire montagneux, les aléas
+        les plus présents sont... voici notre choix d'axe d'analyse...
+      </p>
+      <h3>
+        Carte zoom de la couverture en DICRIMs par rapport au nombre de catnat
+        par communes
+      </h3>
+    </div>
+    <div id="map" style="width: 75rem">
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+      </div>
+    </div>
+    <div class="container">
+      <p>+ ajouter les catégorisations de catnat</p>
+      <h3>Carte cas d'étude des aléas hydrographiques à Annecy</h3>
+    </div>
+    <div id="map" style="width: 75rem">
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+      </div>
+    </div>
+
+    <!-- DONNÉES -->
+    <div class="container">
+      <h2>Analyse des données utilisées</h2>
+    </div>
+
+    <footer class="py-3 my-4">
+      <p class="text-center text-body-secondary">
+        © 2024 Zoé Poirier, Julie Chartier
+      </p>
+    </footer>
+
     <script src="resources/qgis2web_expressions.js"></script>
     <script src="./resources/functions.js"></script>
     <script src="./resources/ol.js"></script>
@@ -82,5 +181,14 @@
     <script src="./layers/layers.js" type="text/javascript"></script>
     <script src="./resources/Autolinker.min.js"></script>
     <script src="./resources/qgis2web.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true });
+    </script>
   </body>
 </html>
