@@ -114,22 +114,56 @@
             }
           }
         }%%
-            
-        class AléaOrigineAnthropique:::alea
-        class AléaIndustriel:::alea
-        class AléaSanitaire:::alea
-        class Pollution:::alea
-        class AléaOrigineNaturelle:::alea
-        class AléaGéomorphologique:::alea
-        %% MouvementTerrain %%
-        class GlaciairePeriglaciaire:::alea
-        %% Avalanche %%
-        class AléaGéodynamique:::alea
-        %% Séisme %%
-        class AléaHydroclimatiqueMétéorologique:::alea
-        %% Inondation %%
+
         
-        class Humain:::alea
+        
+        namespace Risque74 {
+          class Risque:::alea{
+            + type : string
+            + denomination : text
+            + Démarre()
+            + S'étend()
+            + PrendFin()
+          }
+          
+          class Morphodynamique:::morphodynamique
+
+          class Aléa:::alea
+          class AléaOrigineAnthropique:::alea
+          class AléaIndustriel:::alea
+          class AléaSanitaire:::alea
+          class Pollution:::alea
+          class AléaOrigineNaturelle:::alea
+          class AléaGéomorphologique:::alea
+          class MouvementTerrain:::alea
+          class GlaciairePeriglaciaire:::alea
+          class Avalanche:::alea
+          class AléaGéodynamique:::alea
+          class Séisme:::alea
+          class AléaHydroclimatiqueMétéorologique:::alea
+          class Inondation:::alea
+
+          class Humain:::alea
+          
+          class Enjeu:::enjeu
+          class EspaceNaturel:::enjeu
+          class VoieCommunication:::enjeu
+          class Population:::enjeu
+          class Infrastructure:::enjeu
+
+          class Gestion:::gestion
+          class Prévention:::gestion
+          class GestionCrise:::gestion
+          class GestionPostCrise:::gestion
+          class Résilience:::gestion
+
+          class Acteur:::acteur
+
+          class Vulnérabilité:::vulnerabilite
+          class VulnérabilitéPopulation:::vulnerabilite
+        }
+        
+        
         
         Morphodynamique --> Aléa : prédispose à
         Aléa <|-- AléaOrigineAnthropique
@@ -156,24 +190,24 @@
         Inondation --> AléaHydroclimatiqueMétéorologique : entraine (facteur précipitations intenses)
         Inondation --> Pollution : peut causer
 
-        class Enjeu:::enjeu{
+        class Enjeu{
           + id :
           + type :
           + localisation :
         }
 
-        class EspaceNaturel:::enjeu{
+        class EspaceNaturel{
           + type: alpage d'altitude, 
             lit des rivières
         }
 
-        class VoieCommunication:::enjeu{
+        class VoieCommunication{
           + massif : massifs du Mont-Blanc, 
             Aravis, Haut-Giffre, 
             Aiguilles-Rouges et Chablais
         }
 
-        class Infrastructure:::enjeu{
+        class Infrastructure{
           + lieu: zone urbanisée, plaine, station de ski
           + type : habitation, terrain de sport de montagne, zone d'exploitation forestière
           + nombre
@@ -181,7 +215,7 @@
           + sport
         }
 
-        class Population:::enjeu{
+        class Population{
           + nbre_personnes : int
           + blessés
           + décès
@@ -199,15 +233,11 @@
         Inondation --> Enjeu : fragilise/détruit
         Avalanche --> Enjeu : fragilise/détruit
 
-        class Gestion:::gestion{
+        class Gestion{
           + id: 
           + type:
           + dénomination
         }
-        class Prévention:::gestion
-        class GestionCrise:::gestion
-        class GestionPostCrise:::gestion
-        class Résilience:::gestion
 
         Gestion <|-- Prévention
         Gestion <|-- GestionCrise
@@ -216,7 +246,7 @@
 
         Prévention --> Vulnérabilité : vise à réduire
 
-        class Acteur:::acteur{
+        class Acteur{
           + id :
           + nom : string
           + type
@@ -225,16 +255,13 @@
 
         Acteur --> Gestion : intervient dans
         Acteur --> Vulnérabilité : réduit
-        
-        class Vulnérabilité:::vulnerabilite
-        class VulnérabilitéPopulation:::vulnerabilite
 
         Vulnérabilité <|-- VulnérabilitéPopulation
 
         Vulnérabilité --> Enjeu : est une propriété de
         Morphodynamique --> Vulnérabilité : peut accentuer
 
-        class Morphodynamique:::morphodynamique{
+        class Morphodynamique{
           + site géographique
           + pente :
           + manteau neigeux
@@ -244,16 +271,16 @@
             débit montagnard, réseau hydrographique
         }
 
-        class Aléa:::alea{
+        class Aléa{
           + localisation :
           + date :
         }
 
-        class AléaIndustriel:::alea{
+        class AléaIndustriel{
           + type : usine chimique
         }
 
-        class MouvementTerrain:::alea{
+        class MouvementTerrain{
           + origine : naturelle, anthropique
           + Variabilité du volume (qqls m3 à qqls millions de m3)
           + Variabilité de la vitesse
@@ -263,14 +290,14 @@
             retrait-gonflement d'argile
         }
 
-        class Avalanche:::alea{
+        class Avalanche{
           + vitesse: km/h
           + masse: m³
           + type: enum type_avalanche
           + neige: enum nature_neige
         }
 
-        class Séisme:::alea{
+        class Séisme{
           + hypocentre : localisation
           + épicentre : localisation
           + magnitude : échelle de Richter
@@ -281,7 +308,7 @@
             propagation en surface ou non
         }
 
-        class Inondation:::alea{
+        class Inondation{
           + type: inondations de plaine, 
             ruissellement pluvial, crues, 
             remontée de nappe phréatique
