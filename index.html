@@ -21,6 +21,25 @@
     <link rel="stylesheet" href="./resources/ol-layerswitcher.css" />
     <link rel="stylesheet" href="./resources/qgis2web.css" />
     <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
     <title>[sh40] Caractérisation du risque en Haute-Savoie</title>
   </head>
   <body>
@@ -473,6 +492,57 @@
     <br />
     <div class="container">
       <h2>Analyse des données utilisées</h2>
+      <table>
+        <tr>
+          <th>Source de données</th>
+          <th>Producteur</th>
+          <th>Disponibilité</th>
+          <th>Licence</th>
+          <th>Présence dans le projet</th>
+        </tr>
+        <tr>
+          <td>BDTOPO_3-4 traitement du 2024-10-01</td>
+          <td>IGN-F</td>
+          <td>Libre</td>
+          <td>Licence ouverte Etalab</td>
+          <td>7/16</td>
+        </tr>
+        <tr>
+          <td>ADMIN-EXPRESS_3-2 traitement du 2023-06-05</td>
+          <td>IGN-F</td>
+          <td>Libre</td>
+          <td>Licence ouverte Etalab</td>
+          <td>2/16</td>
+        </tr>
+        <tr>
+          <td>ne_10m_admin_0_countries</td>
+          <td>Natural Earth</td>
+          <td>Libre</td>
+          <td>?</td>
+          <td>1/16</td>
+        </tr>
+        <tr>
+          <td>GASPAR</td>
+          <td>Ministère de la Transition Écologique</td>
+          <td>Libre</td>
+          <td>Licence ouverte</td>
+          <td>2/16</td>
+        </tr>
+        <tr>
+          <td>QuickOSM</td>
+          <td>Communauté OpenStreetMap</td>
+          <td>Libre</td>
+          <td>licence ouverte GNU General Public License</td>
+          <td>3/16</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Observatoire des Territoires (ANCT)</td>
+          <td>Libre</td>
+          <td>licence ouverte</td>
+          <td></td>
+        </tr>
+      </table>
     </div>
 
     <footer class="py-3 my-4">
