@@ -101,41 +101,33 @@
       <br />
 
       <h3>Le département de la Haute-Savoie (74)</h3>
-      <div class="container text-left">
-        <div class="row align-items-start">
-          <div class="col">
-            <ul>
-              <li><b>Région :</b> Auvergne-Rhône-Alpes</li>
-              <li><b>Départements limitrophes :</b> Ain (01), Savoie (73).</li>
-              <li><b>Pays limitrophes :</b> Suisse, Italie.</li>
-              <li>
-                <b>Particularité :</b> Département montagneux
-                <ul>
-                  <li>
-                    <b>Altitude minimum :</b> 250m au-dessus du niveau de la
-                    mer. (source : Wikipedia)
-                  </li>
-                  <li>
-                    <b>Point culminant :</b> Le Mont-Blanc, 4806m au-dessus du
-                    niveau de la mer. (source : Wikipedia)
-                  </li>
-                  <li>
-                    Concerné par la
-                    <b>loi Montagne pour l'intégralité de son territoire</b>
-                    (Source : loimontagne.info)
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="col">
-            <img
-              src="./images/Situation Haute-Savoie en France.svg"
-              class="img-fluid"
-            />
-          </div>
-        </div>
-      </div>
+      <ul>
+        <li><b>Région :</b> Auvergne-Rhône-Alpes</li>
+        <li><b>Départements limitrophes :</b> Ain (01), Savoie (73).</li>
+        <li><b>Pays limitrophes :</b> Suisse, Italie.</li>
+        <li>
+          <b>Particularité :</b> Département montagneux
+          <ul>
+            <li>
+              <b>Altitude minimum :</b> 250m au-dessus du niveau de la mer.
+              (source : Wikipedia)
+            </li>
+            <li>
+              <b>Point culminant :</b> Le Mont-Blanc, 4806m au-dessus du niveau
+              de la mer. (source : Wikipedia)
+            </li>
+            <li>
+              Concerné par la
+              <b>loi Montagne pour l'intégralité de son territoire</b>
+              (Source : loimontagne.info)
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <img
+        src="./images/Situation Haute-Savoie en France.png"
+        class="img-fluid"
+      />
     </div>
     <br />
 
@@ -182,7 +174,30 @@
         classDef vulnerabilite fill:#f5f5f5;
         classDef gestion fill:#ffe6cc;
       </pre>-->
-
+    <div class="container">
+      <pre class="mermaid">
+        classDiagram
+          %%{
+            init: {
+              'theme': 'base',
+              'themeVariables': {
+                'primaryBorderColor': '#000000',
+                'mainBkg': '#ffffff'
+              }
+            }
+          }%%
+  
+          class Risque:::alea{
+            + type : string
+            + denomination : text
+            + Démarre()
+            + S'étend()
+            + PrendFin()
+          }
+  
+          classDef alea fill:#dae8fc;
+      </pre>
+    </div>
     <pre class="mermaid">
       ---
       title: 
@@ -198,55 +213,42 @@
             }
           }
         }%%
-
-        
-        
-        namespace Risque74 {
-          class Risque:::alea{
-            + type : string
-            + denomination : text
-            + Démarre()
-            + S'étend()
-            + PrendFin()
-          }
           
-          class Morphodynamique:::morphodynamique
+        class Morphodynamique:::morphodynamique
 
-          class Aléa:::alea
-          class AléaOrigineAnthropique:::alea
-          class AléaIndustriel:::alea
-          class AléaSanitaire:::alea
-          class Pollution:::alea
-          class AléaOrigineNaturelle:::alea
-          class AléaGéomorphologique:::alea
-          class MouvementTerrain:::alea
-          class GlaciairePeriglaciaire:::alea
-          class Avalanche:::alea
-          class AléaGéodynamique:::alea
-          class Séisme:::alea
-          class AléaHydroclimatiqueMétéorologique:::alea
-          class Inondation:::alea
+        class Aléa:::alea
+        class AléaOrigineAnthropique:::alea
+        class AléaIndustriel:::alea
+        class AléaSanitaire:::alea
+        class Pollution:::alea
+        class AléaOrigineNaturelle:::alea
+        class AléaGéomorphologique:::alea
+        class MouvementTerrain:::alea
+        class GlaciairePeriglaciaire:::alea
+        class Avalanche:::alea
+        class AléaGéodynamique:::alea
+        class Séisme:::alea
+        class AléaHydroclimatiqueMétéorologique:::alea
+        class Inondation:::alea
 
-          class Humain:::alea
-          
-          class Enjeu:::enjeu
-          class EspaceNaturel:::enjeu
-          class VoieCommunication:::enjeu
-          class Population:::enjeu
-          class Infrastructure:::enjeu
-
-          class Gestion:::gestion
-          class Prévention:::gestion
-          class GestionCrise:::gestion
-          class GestionPostCrise:::gestion
-          class Résilience:::gestion
-
-          class Acteur:::acteur
-
-          class Vulnérabilité:::vulnerabilite
-          class VulnérabilitéPopulation:::vulnerabilite
-        }
+        class Humain:::alea
         
+        class Enjeu:::enjeu
+        class EspaceNaturel:::enjeu
+        class VoieCommunication:::enjeu
+        class Population:::enjeu
+        class Infrastructure:::enjeu
+
+        class Gestion:::gestion
+        class Prévention:::gestion
+        class GestionCrise:::gestion
+        class GestionPostCrise:::gestion
+        class Résilience:::gestion
+
+        class Acteur:::acteur
+
+        class Vulnérabilité:::vulnerabilite
+        class VulnérabilitéPopulation:::vulnerabilite
         
         
         Morphodynamique --> Aléa : prédispose à
@@ -470,10 +472,64 @@
         par communes
       </h3>
       <img
-        src="./images/DICRIM_arretes_CATNAT_74.svg"
+        src="./images/Disponibilité des DICRIM et communes concernées par des arrêtés CATNAT en Haute-Savoie.svg"
         class="img-fluid"
         style="width: 88%"
       />
+      <p>
+        <br />
+        <b>DICRIM</b> : Disponibilité d'Information Communale sur les Risques
+        Majeurs<br />
+        <b>CATNAT</b> : Reconnaissance de l'état de catastrophe naturelle par
+        arrêté
+      </p>
+      <h4>Interprétation de la représentation et analyse des données</h4>
+      <p>
+        Sur cette représentation du département, nous observons que toutes les
+        communes de la Haute-Savoie à l'exception d'une (Vanzy) sont concernées
+        par un arrêté de reconnaissance d'état de catastrophe naturelle et que
+        seulement une partie des communes du département sont couvertes par un
+        DICRIM (135 communes sur 279 soit seulement 48,4 %).
+      </p>
+      <p>
+        Nous avons voulu vérifier qu'aucun arrêté CATNAT ne concernait la
+        commune de Vanzy. Nous avons été surprises de trouver dès les premiers
+        résultats de notre recherche internet des informations contradictoires.
+        En effet, selon
+        <a
+          href="https://www.haute-savoie.gouv.fr/contenu/telechargement/33242/196394/file/CatNatArretes74_21102024.pdf"
+          >le site des services de l'État en Haute-Savoie</a
+        >, la commune de Vanzy est concernée par les arrêtés suivants :
+      </p>
+      <ul>
+        <li>Février 1993 : <b>Inondation et coulées de boues</b></li>
+        <li>Octobre 1996 : <b>Séisme</b></li>
+        <li>
+          Juillet 2023 : <b>Retrait-gonflement des sols argileux</b> (mouvements
+          de terrain différentiels consécutifs à la sécheresse et à la
+          réhydratation des sols)
+        </li>
+      </ul>
+      <p>
+        De plus, selon la même source, il est indiqué que l'ensemble du
+        département de Haute-Savoie bénéficie de la reconnaissance de
+        catastrophe naturelle pour les
+        <b>inondations</b> et <b>action du vent (à titre exceptionnel)</b> dans
+        l'arrêté du 18 novembre 1982 (sur la période du 6 au 10 novembre 1982).
+      </p>
+      <p>
+        À partir de ces observations, nous concluons que les données utilisées
+        de la base de données
+        <i
+          >Base nationale de Gestion ASsistée des Procédures Administratives
+          relatives aux Risques</i
+        >
+        (GASPAR) sont très probablement incomplètes ou de mauvaise qualité
+        facilitant les soucis de manipulation et les erreurs d'interprétation
+        des représentations produites à partir de ces données. Nous pouvons donc
+        légitimement nous interroger sur nos résultats concernant la couverture
+        en DICRIM du territoire.
+      </p>
     </div>
 
     <div class="container">
@@ -495,6 +551,11 @@
     <br />
     <div class="container">
       <h2>Analyse des données utilisées</h2>
+      <p>
+        Le champ <i>Présence dans le projet</i> correspond au pourcentage de
+        couches utilisant une source de données par rapport au nombre total de
+        couches pour toutes les cartes présentées sur cette page.
+      </p>
       <table>
         <tr>
           <th>Source de données</th>
@@ -508,35 +569,42 @@
           <td>IGN-F</td>
           <td>Libre</td>
           <td>Licence ouverte Etalab</td>
-          <td>43,7 %</td>
+          <td>45 % (9/20 couches)</td>
         </tr>
         <tr>
           <td>ADMIN-EXPRESS_3-2 traitement du 2023-06-05</td>
           <td>IGN-F</td>
           <td>Libre</td>
           <td>Licence ouverte Etalab</td>
-          <td>12,5 %</td>
+          <td>15 % (3/20 couches)</td>
         </tr>
         <tr>
           <td>ne_10m_admin_0_countries</td>
           <td>Natural Earth</td>
           <td>Libre</td>
           <td>?</td>
-          <td>6,2 %</td>
+          <td>10 % (2/20 couches)</td>
         </tr>
         <tr>
           <td>GASPAR</td>
           <td>Ministère de la Transition Écologique</td>
           <td>Libre</td>
           <td>Licence ouverte</td>
-          <td>12,5 %</td>
+          <td>10 % (2/20 couches)</td>
         </tr>
         <tr>
           <td>QuickOSM</td>
           <td>Communauté OpenStreetMap</td>
           <td>Libre</td>
           <td>licence ouverte GNU General Public License</td>
-          <td>18,7 %</td>
+          <td>15 % (3/20 couches)</td>
+        </tr>
+        <tr>
+          <td>BDAlti</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>5 % (1/20 couches)</td>
         </tr>
         <!--<tr>
           <td></td>
@@ -546,8 +614,46 @@
           <td></td>
         </tr>-->
       </table>
+      <br />
+      <p>
+        Pour conclure, notre travail sur la représentation du risque dans le
+        département de la Haute-Savoie permet de soulever des questions
+        concernant la disponibilité et la qualité des données caractérisant le
+        territoire. Dans l'exemple précédent reprenant les informations
+        relatives aux DICRIMs et arrêtés CATNAT, nous avons observé la
+        difficulté de rassembler des données fiables. Ainsi, comment vérifier
+        l'exhaustivité de ces données afin de garantir des représentation non
+        mensongères ?
+      </p>
     </div>
 
+    <!--CONCLUSION et OUVERTURE-->
+    <div class="container">
+      <h3>Conclusion</h3>
+      <p>
+        Au cours de cette présentation, nous avons identifié plusieurs
+        ouvertures possibles.
+      </p>
+
+      <p>
+        Tout d'abord, il aurait été intéressant de compléter notre propos en
+        finissant notre début de représentation de la commune de
+        Chamonix-Mont-Blanc avec notamment les intéractions des aléas
+        inondation, mouvements de terrain, avalanche, glaciaire et
+        périglaciaire, en étudiant notamment l'impact des changements
+        climatiques sur la région.
+      </p>
+      <p>
+        Dans un second temps, si la disponibilité des données le permet, une
+        représentation des mêmes types d'aléas ainsi que la gestion du risque
+        dans les pays limitrophes que sont la Suisse et l'Italie peut être
+        pertinent non seulement à titre de comparaison mais aussi pour
+        comprendre ce que les pays pourraient apprendre les uns et les autres de
+        leurs voisins.
+      </p>
+    </div>
+
+    <!--FOOTER-->
     <footer class="py-3 my-4">
       <p class="text-center text-body-secondary">
         © 2024 Zoé Poirier, Julie Chartier
