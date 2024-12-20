@@ -45,15 +45,62 @@
     <!-- INTRODUCTION -->
     <div class="container">
       <h2>Introduction</h2>
-    </div>
-
-    <!-- PROBLÉMATIQUE -->
-    <div class="container">
-      <h2>Problématique</h2>
       <p>
-        Les aléas des paysages montagnards en cascade : quel risque pour les
-        communes de la Haute-Savoie ?
+        Ce travail se situe dans le contexte de l'<i
+          >UV SH40 - Les Risques : entre technique et société</i
+        >, dispensée à l'UTC par Johan Desbonnet.
       </p>
+      <p>
+        <b>Objectif : </b>Représenter et analyser le risque dans un département
+        de notre choix.
+      </p>
+      <p>Processus :</p>
+      <ul>
+        <li>
+          Modéliser le risque dans le département à partir de ses composantes :
+          <b>réalisation d'un Modèle Conceptuel de Données (MCD)</b>.
+        </li>
+        <li>
+          Représenter ce risque à différentes échelles :
+          <b
+            >réalisation de cartes à l'aide d'un Système d'Information
+            Géographique (SIG)</b
+          >.
+        </li>
+        <li>
+          Caractériser l'accès à la donnée dans le contexte de la représentation
+          du risque d'un territoire :
+          <b
+            >analyse de la donnée utilisée ou manquante pour la réalisation du
+            travail</b
+          >.
+        </li>
+      </ul>
+
+      <h3>Le département de la Haute-Savoie (74)</h3>
+      <ul>
+        <li><b>Région :</b> Auvergne-Rhône-Alpes</li>
+        <li><b>Départements limitrophes :</b> Ain (01), Savoie (73).</li>
+        <li><b>Pays limitrophes :</b> Suisse, Italie.</li>
+        <li>
+          <b>Particularité :</b> Département montagneux
+          <ul>
+            <li>
+              <b>Altitude minimum :</b> 250m au-dessus du niveau de la mer.
+              (source : Wikipedia)
+            </li>
+            <li>
+              <b>Point culminant :</b> Le Mont-Blanc, 4806m au-dessus du niveau
+              de la mer. (source : Wikipedia)
+            </li>
+            <li>
+              Concerné par la
+              <b>loi Montagne pour l'intégralité de son territoire</b>
+              (Source : loimontagne.info)
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <!-- MCD -->
@@ -63,8 +110,8 @@
         Les aléas des paysages montagnards en cascade : quel risque pour les
         communes de la Haute-Savoie ?
       </h3>
-
-      <!--<pre class="mermaid">
+    </div>
+    <!--<pre class="mermaid">
       ---
       title: "Légende"
       ---
@@ -88,7 +135,7 @@
         class Gestion:::gestion
 
         classe1 -->
-      <!--classe2 : classe1 est en relation avec classe 2
+    <!--classe2 : classe1 est en relation avec classe 2
         classe3 <|-- classe4 : classe4 hérite de la classe3
 
         classDef morphodynamique fill:#e1d5e7;
@@ -99,7 +146,7 @@
         classDef gestion fill:#ffe6cc;
       </pre>-->
 
-      <pre class="mermaid">
+    <pre class="mermaid">
       ---
       title: 
       ---
@@ -322,9 +369,10 @@
         classDef gestion fill:#ffe6cc;
         
 
-    </pre
-      >
-      <img src="./images/legende_UML.png" width="100%" />
+    </pre>
+
+    <div class="container">
+      <img src="./images/legende_UML.png" width="90%" />
       <p>
         Le DDRM du département de la Haute-Savoie (74) fait état des 17 aléas
         qui impactent le territoire. Dans ce modèle conceptuel de données, nous
@@ -333,21 +381,21 @@
         système.
       </p>
       <h3>Retour critique</h3>
-      <p>
-        Malgré nous, les enjeux sont au centre ce qui les situent au coeur de la
-        notion du risque en Haute-Savoie. Comme expliqué précédemment, ce MCD ne
-        représente qu'une partie des aléas concernant le territoire par
-        conséquent ce modèle ne représente pas la totalité du système. Afin
-        d'avoir une approche systémique complète, il devrait être complété afin
-        de modéliser les intéractions avec les autres aléas.
-      </p>
-      <p>
-        De plus, concernant cette fois-ci la qualité du travail fournit, sfin
-        d'être exploitable dans un contexte professionnel ou de recherche par
-        exemple, un travail afin d'améliorer la généralisation des attributs et
-        supprimer définitiement les instances de classes serait intéressant à
-        mener.
-      </p>
+      <div class="row justify-content-center">
+        <div class="col">
+          <h4>Points forts</h4>
+          <p>
+            agcladgcld gclshcbjhs dbclsdhcldshjvldjsah gljglgcbhcbhuyfgvghj
+            iuytrdtfghj
+          </p>
+        </div>
+        <div class="col">
+          <h4>Points perfectibles</h4>
+          <p>
+            testtttttttttt tttttl sjhvjkhvljsfdhvlajf dvlfdbvlajhbvdvbdshvlsdjhc
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- CARTES -->
@@ -376,14 +424,26 @@
         Carte zoom de la couverture en DICRIMs par rapport au nombre de catnat
         par communes
       </h3>
-      <img src="./images/DICRIM_arretes_CATNAT_74.svg" style="width: 98%" />
+      <img
+        src="./images/DICRIM_arretes_CATNAT_74.svg"
+        class="img-fluid"
+        style="width: 88%"
+      />
     </div>
 
     <div class="container">
       <p>+ ajouter les catégorisations de catnat</p>
       <h3>Carte cas d'étude des aléas hydrographiques à Annecy</h3>
-      <img src="./images/Carte_Annecy_Finale.png" style="width: 100%" />
-      <img src="./images/Zoom_Annecy_Tampon.png" style="width: 100%" />
+      <img
+        src="./images/Carte_Annecy_Finale.png"
+        class="img-fluid"
+        style="width: 90%"
+      />
+      <img
+        src="./images/Zoom_Annecy_Tampon.png"
+        class="img-fluid"
+        style="width: 90%"
+      />
     </div>
 
     <!-- DONNÉES -->
