@@ -287,9 +287,34 @@
         Avalanche --> Enjeu : fragilise/détruit
 
         class Gestion{
-          + id: 
-          + type:
-          + dénomination
+          + id : 
+          + type :
+          + dénomination :
+          + couts : float
+          + duree : Date
+          + commence()
+          + prendFin()
+        }
+
+        class Prévention{
+          + type_prevention : production connaissance
+          + document :
+          + administrations_concernees : Acteur[
+        }
+
+        class GestionCrise{
+          + acteurs_mobilises : Acteur[]
+        }
+
+        class GestionPostCrise{
+          + mesures_post_crises :
+          + documents :
+          + administrations_concernees : Acteur[]
+        }
+
+        class Résilience{
+          + lois_arretes_resilience
+          + acteurs : Acteur[]
         }
 
         Gestion <|-- Prévention
