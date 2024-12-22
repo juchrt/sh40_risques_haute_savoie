@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./resources/ol.css" />
+    <link rel="stylesheet" href="resources/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="./resources/ol-layerswitcher.css" />
+    <link rel="stylesheet" href="./resources/qgis2web.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>[sh40] Caractérisation du risque en Haute-Savoie</title>
+  </head>
+  <body>
+    <!--
+      Introduction commande de l’UV enjeux du travail
+      présentation du territoire 1 paragraphe)
+
+      Modèle conceptuel modifié retour critique
+
+      Analyse des données utilisées et représentations produites
+      poster ou API cartographique simplifiée
+    -->
+
+    <nav class="navbar bg-body-tertiary" style="margin-bottom: 25px">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1 fs-3"
+          >Représentation du risque en Haute-Savoie</span
+        >
+      </div>
+    </nav>
+
+    <!-- INTRODUCTION -->
+
+    <h2>Introduction</h2>
+    <p>
+      Ce travail se situe dans le contexte de l'<i
+        >UV SH40 - Les Risques : entre technique et société</i
+      >, dispensée à l'UTC par Johan Desbonnet. Il est disponible
+      <a href="https://juchrt.github.io/sh40_risques_haute_savoie/">en ligne</a>
+      afin de faciliter l'accès à l'information au plus grand nombre.
+    </p>
+    <p>
+      <b>Objectif : </b>Représenter et analyser le risque dans un département de
+      notre choix.
+      <br />
+      <b>Enjeu : </b>Adopter une approche systémique afin de mettre en lien les
+      composantes du risque.
+    </p>
+    <p>Processus :</p>
+    <ul>
+      <li>
+        Modéliser le risque dans le département à partir de ses composantes :
+        <b>réalisation d'un Modèle Conceptuel de Données (MCD)</b>.
+      </li>
+      <li>
+        Représenter ce risque à différentes échelles :
+        <b
+          >réalisation de cartes à l'aide d'un Système d'Information
+          Géographique (SIG)</b
+        >.
+      </li>
+      <li>
+        Caractériser l'accès à la donnée dans le contexte de la représentation
+        du risque d'un territoire :
+        <b
+          >analyse de la donnée utilisée ou manquante pour la réalisation du
+          travail</b
+        >.
+      </li>
+    </ul>
+
+    <p>
+      Nous avons choisi de nous intéresser au département de la Haute-Savoie
+      premièrement car nous sommes toutes deux intéressées par le milieu
+      montagnard. En outre, la Haute-Savoie a des caractéristiques géographiques
+      et climatiques bien spécifiques. Située dans les Alpes françaises, la
+      région montagneuse avec des altitudes élevées, des vallées et des pentes
+      abruptes favorise de fait de nombreux risques naturels. Elle est aussi
+      concernée par le tourisme saisonnier pour les sports d'hiver ce qui
+      constitue une arrivée de population peu sensibles aux risque du
+      département en comparaison aux habitants.
+    </p>
+
+    <h3>Le département de la Haute-Savoie (74)</h3>
+    <ul>
+      <li><b>Région :</b> Auvergne-Rhône-Alpes</li>
+      <li><b>Départements limitrophes :</b> Ain (01), Savoie (73).</li>
+      <li><b>Pays limitrophes :</b> Suisse, Italie.</li>
+      <li>
+        <b>Particularité :</b> Département montagneux
+        <ul>
+          <li>
+            <b>Altitude minimum :</b> 250m au-dessus du niveau de la mer.
+            (source : Wikipedia)
+          </li>
+          <li>
+            <b>Point culminant :</b> Le Mont-Blanc, 4806m au-dessus du niveau de
+            la mer. (source : Wikipedia)
+          </li>
+          <li>
+            Concerné par la
+            <b>loi Montagne pour l'intégralité de son territoire</b>
+            (Source : loimontagne.info)
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <img
+      src="./images/Situation Haute-Savoie en France.png"
+      class="img-fluid"
+    />
+
+    <!-- MCD -->
+
+    <h2>Modèle conceptuel de données (MCD)</h2>
+
+    <h3>Les sources</h3>
+    <p>
+      Le Dossier Départemental des Risques Majeurs (édition 2022) est le
+      principal support sur lequel nous nous appuyons pour construire notre MCD.
+    </p>
+
+    <h3>Choix des aléas</h3>
+    <p>
+      Le DDRM du département de la Haute-Savoie fait état des 17 aléas qui
+      impactent le territoire. Dans ce modèle conceptuel de données, nous avons
+      fait le choix de ne détailler (avec leurs attributs) que 6 aléas clés :
+      séisme, mouvement de terrain, inondation, avalanche, pollution, glaciaire
+      et périglaciaire. Ces aléas sont particulièrement spécifiques au
+      département, nous avons donc choisi de développer ceux-ci dans un premier
+      temps et de faire figurer ceux avec lesquels ils interagissent mais de
+      façon moins développée. Sans cette sélection, le modèle aurait été
+      surchargé et aurait empêché une bonne lisibilité et accessibilité.
+    </p>
+
+    <h3>Construction</h3>
+    <p>
+      Il est construit de manière à ce que toutes les parties du schéma
+      composent le risque : les aléas, les acteurs, la vulnérabilité, la gestion
+      du risque et la morphodynamique. Vous trouverez dans la plupart d'entre
+      elles les attributs qui les définissent dans le contexte de la
+      Haute-Savoie. Ce département fait face à de nombreux risques de part la
+      diversité de ses paysages (une morphodynamique aux nombreux paramètres :
+      pente, manteau neigeux, réseaux hydrographiques, etc.) et les successions
+      possibles des catastrophes. C'est pourquoi de nombreux liens se croisent.
+      Les aléas sont simplement catégorisés par types d'aléa comme vu en cours
+      et héritent des classes mères. Aussi, nous avons regroupé les enjeux
+      (conséquences possibles dans le DDRM) par catégories afin de simplifier la
+      lecture du modèle : infrastructure, espace naturel, voie de communication
+      et humain. Pour finir, nous avons retravaillé la notion de gestion par
+      rapport à notre première version afin de faire figurer ses différentes
+      étapes : prévention, gestion pendant la crise, gestion post-crise et
+      résilience.
+    </p>
+
+    <h3>Résultat</h3>
+    <h4>
+      Les aléas des paysages montagnards en cascade : quel risque pour les
+      communes de la Haute-Savoie ?
+    </h4>
+
+    <img src="./images/risque.png" class="img-fluid" width="100%" />
+    <img src="./images/mcd_content.svg" class="img-fluid" />
+    <img src="./images/legende_UML.png" width="80%" class="img-fluid" />
+
+    <h3>Retour critique</h3>
+    <p>Clefs d'amélioration :</p>
+    <ul>
+      <li>Ne présente qu'une partie du système.</li>
+      <li>
+        Manque d'un travail supplémentaire sur la généralisation des classes et
+        des attributs afin de s'éloigner des instances.
+      </li>
+      <li>La notion de vulnérabilité n'est pas assez développée.</li>
+    </ul>
+
+    <h3>
+      Carte zoom de la couverture en DICRIMs par rapport au nombre de catnat par
+      communes
+    </h3>
+    <img
+      src="./images/Disponibilité des DICRIM et communes concernées par des arrêtés CATNAT en Haute-Savoie.svg"
+      class="img-fluid"
+      style="width: 88%"
+    />
+    <p>
+      <b>DICRIM</b> : Disponibilité d'Information Communale sur les Risques
+      Majeurs<br />
+      <b>CATNAT</b> : Reconnaissance de l'état de catastrophe naturelle par
+      arrêté
+    </p>
+    <h4>Interprétation de la représentation et analyse des données</h4>
+    <p>
+      Sur cette représentation du département, nous observons que toutes les
+      communes de la Haute-Savoie à l'exception d'une seule (Vanzy) sont
+      concernées par un arrêté de reconnaissance d'état de catastrophe naturelle
+      et que seulement une partie des communes du département sont couvertes par
+      un DICRIM (135 communes sur 279 soit seulement 48,4 %). Les DICRIMs,
+      lorsqu'ils sont présents, sont une information à destination des
+      populations locales et n'atteignent que rarement les touristes attirés par
+      les paysages et les sports d'hiver, les rendant d'autant plus vulnérables.
+    </p>
+    <p>
+      Nous avons voulu vérifier qu'aucun arrêté CATNAT ne concernait la commune
+      de Vanzy. Nous avons été surprises de trouver dès les premiers résultats
+      de notre recherche internet des informations contradictoires. En effet,
+      selon
+      <a
+        href="https://www.haute-savoie.gouv.fr/contenu/telechargement/33242/196394/file/CatNatArretes74_21102024.pdf"
+        >le site des services de l'État en Haute-Savoie</a
+      >, la commune de Vanzy est concernée par les arrêtés suivants :
+    </p>
+    <ul>
+      <li>Février 1993 : <b>Inondation et coulées de boues</b></li>
+      <li>Octobre 1996 : <b>Séisme</b></li>
+      <li>
+        Juillet 2023 : <b>Retrait-gonflement des sols argileux</b> (mouvements
+        de terrain différentiels consécutifs à la sécheresse et à la
+        réhydratation des sols)
+      </li>
+    </ul>
+    <p>
+      De plus, selon la même source, il est indiqué que l'ensemble du
+      département de Haute-Savoie bénéficie de la reconnaissance de catastrophe
+      naturelle pour les
+      <b>inondations</b> et <b>action du vent (à titre exceptionnel)</b> dans
+      l'arrêté du 18 novembre 1982 (sur la période du 6 au 10 novembre 1982).
+    </p>
+    <p>
+      À partir de ces observations, nous concluons que les données utilisées de
+      la base de données
+      <i
+        >Base nationale de Gestion ASsistée des Procédures Administratives
+        relatives aux Risques</i
+      >
+      (GASPAR) sont très probablement incomplètes ou de mauvaise qualité
+      facilitant les soucis de manipulation et les erreurs d'interprétation des
+      représentations produites à partir de ces données. Nous pouvons donc
+      légitimement nous interroger aussi sur nos résultats concernant la
+      couverture en DICRIM du territoire.
+    </p>
+
+    <h3>Carte cas d'étude des aléas hydrographiques à Annecy</h3>
+    <p>
+      Nous avons ensuite choisi de faire un focus sur un des aléas de
+      Haute-Savoie et de l'examiner sur une commune en particulier. Nous avons
+      sélectionné Annecy car elle rassemble plusieurs facteurs intéressants liés
+      à notre problématique. Tout d'abord, elle est la ville la plus grande et
+      plus peuplée de Haute-Savoie (132 000 habitants). Située dans la vallée de
+      l'Isère, elle présente des caractéristiques géographiques typiques des
+      régions montagnardes. EN effet, elle est entourée de montagnes, notamment
+      les Montagnes de l'Avant-Pays à l'ouest et les Aravis à l'est. D'un point
+      de vur hydrographique, elle est célèbre pour son lac (d'Annecy) mais est
+      aussi traversée par des canaux (cf Petite Venise des Alpes). En raison de
+      son hydrographie particulière, nous avons décidé de nous intéresser aux
+      risques d'inondations et crues dans la commune. La géographie d'Annecy,
+      préalablement décrite, la rend vulnérable aux crues et aux inondations,
+      notamment en période de fortes pluies ou de fonte rapide des neiges.
+    </p>
+    <ul>
+      <li>
+        <b>Le Thiou</b> : Ce petit cours d'eau, qui traverse la vieille ville
+        d'Annecy, peut rapidement déborder lors de crues importantes. En effet,
+        le Thiou reçoit les eaux du lac d'Annecy et des affluents, ce qui peut
+        provoquer des inondations locales dans les zones basses de la ville,
+        surtout en période de forte pluie ou de fonte des neiges en montagne.
+      </li>
+      <li>
+        <b>Le lac d'Annecy</b> : Bien que le lac soit une ressource précieuse,
+        il peut aussi constituer un risque. Lors de fortes précipitations ou de
+        crues en amont, le niveau du lac peut monter, menaçant les zones
+        riveraines.
+      </li>
+      <li>
+        Les <b>montagnes</b> sont un facteur d'amplification rapide des risques
+        de crues et d'inondation par du ruissellement rapide, la fonte des
+        neiges, des avalanches et glissements de terrain pouvant obstruer les
+        rivières et provoquer des crues en aval.
+      </li>
+    </ul>
+    <img
+      src="./images/Carte_Annecy_Finale.png"
+      class="img-fluid"
+      style="width: 90%"
+    />
+    <p>
+      De plus, la présence du Dépôt Pétrolier de Haute-Savoie (DPHS) à Annecy
+      présente un risque pour l'hydrographie de la ville. En effet, cette
+      infrastructure stockant des produits dérivés du pétrole et alimentée par
+      pipeline est classée SEVESO 3 de seuil haut. Située proche d'un cours
+      d'eau, s'il advenait des crues ou inondations importantes auxquelle
+      l'usine ne serait pas préparée, cela rendrait la ville vulnérable à une
+      pollution importante.
+    </p>
+
+    <p>
+      De manière à mieux observer l'aléa, nous avons décider d'effectuer un zoom
+      sur une partie de la ville. Sur cette carte, nous avons ajouté une zone
+      tampon de 100m autour du Thiou qui correspond aux zones basses d'Annecy
+      afin de déterminer quels sont les bâtiments vulnérables qui seraient
+      impactés par de possible inondations. Les bâtiments vulnérables sont les
+      bâtiments accueillant du public : écoles, hôpitaux, etc.
+    </p>
+    <img
+      src="./images/annecy_quartier.png"
+      class="img-fluid"
+      style="width: 90%"
+    />
+    <p>Nous dénombrons 37 bâtiments vulnérables dans la zone tampon.</p>
+
+    <!-- DONNÉES -->
+
+    <h2>Analyse des données utilisées</h2>
+    <p>
+      Le champ <i>Présence dans le projet</i> correspond au pourcentage de
+      couches utilisant une source de données par rapport au nombre total de
+      couches pour toutes les cartes présentées sur cette page.
+    </p>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <th scope="col">Source de données</th>
+          <th scope="col">Producteur</th>
+          <th scope="col">Disponibilité</th>
+          <th scope="col">Licence</th>
+          <th scope="col">Présence dans le projet</th>
+        </tr>
+        <tr>
+          <td scope="row">BDTOPO_3-4 traitement du 2024-10-01</td>
+          <td>IGN-F</td>
+          <td>Libre</td>
+          <td>Licence ouverte Etalab</td>
+          <td>45 % (9/20 couches)</td>
+        </tr>
+        <tr>
+          <td scope="row">ADMIN-EXPRESS_3-2 traitement du 2023-06-05</td>
+          <td>IGN-F</td>
+          <td>Libre</td>
+          <td>Licence ouverte Etalab</td>
+          <td>15 % (3/20 couches)</td>
+        </tr>
+        <tr>
+          <td scope="row">ne_10m_admin_0_countries</td>
+          <td>Natural Earth</td>
+          <td>Libre</td>
+          <td>?</td>
+          <td>10 % (2/20 couches)</td>
+        </tr>
+        <tr>
+          <td scope="row">GASPAR</td>
+          <td>Ministère de la Transition Écologique</td>
+          <td>Libre</td>
+          <td>Licence ouverte</td>
+          <td>10 % (2/20 couches)</td>
+        </tr>
+        <tr>
+          <td scope="row">QuickOSM</td>
+          <td>Communauté OpenStreetMap</td>
+          <td>Libre</td>
+          <td>licence ouverte GNU General Public License</td>
+          <td>15 % (3/20 couches)</td>
+        </tr>
+        <tr>
+          <td scope="row">BDAlti</td>
+          <td>IGN-F</td>
+          <td>Libre</td>
+          <td>"ouvert à tous" (source : métadonnées)</td>
+          <td>5 % (1/20 couches)</td>
+        </tr>
+      </table>
+    </div>
+
+    <!--CONCLUSION et OUVERTURE-->
+
+    <h3>Conclusion</h3>
+    <p>
+      Pour conclure, notre travail sur la représentation du risque dans le
+      département de la Haute-Savoie permet de soulever des questions concernant
+      la disponibilité et la qualité des données caractérisant le territoire.
+      Dans l'exemple précédent reprenant les informations relatives aux DICRIMs
+      et arrêtés CATNAT, nous avons observé la difficulté de rassembler des
+      données fiables. Ainsi, comment vérifier l'exhaustivité de ces données
+      afin de garantir des représentations non mensongères ?
+    </p>
+    <p>
+      Au cours de cette présentation, nous avons identifié plusieurs ouvertures
+      possibles.<br />
+      Tout d'abord, il peut être intéressant de compléter notre propos en
+      finissant notre début de représentation de la commune de
+      Chamonix-Mont-Blanc avec notamment les interractions des aléas inondation,
+      mouvements de terrain, avalanche, glaciaire et périglaciaire, en étudiant
+      notamment l'impact des changements climatiques sur la région.
+    </p>
+    <p>
+      Dans un second temps, si la disponibilité des données le permet, une
+      représentation des mêmes types d'aléas ainsi que la gestion du risque dans
+      les pays limitrophes que sont la Suisse et l'Italie peut être pertinent
+      non seulement à titre de comparaison mais aussi pour comprendre ce que les
+      pays pourraient apprendre de leurs voisins.
+    </p>
+
+    <!--SOURCES-->
+
+    <h3>Sources</h3>
+    <ul>
+      <li>
+        LoiMontagne.info, site indépendant,
+        <a href="https://www.loimontagne.info/departements"
+          >Départements concernés par la loi Montagne</a
+        >, consulté le 19/12/2024.
+      </li>
+      <li>
+        Département de Haute-Savoie,
+        <a
+          href="https://hautesavoie.fr/en-pratique/routes/se-deplacer-en-hiver/loi-montagne-en-haute-savoie/"
+          >Loi Montagne : Tout ce qu'il faut savoir</a
+        >, consulté le 19/12/2024.
+      </li>
+      <li>
+        Préfecture de la Haute-Savoie,
+        <a
+          href="https://www.haute-savoie.gouv.fr/Publications/Plans-et-schemas/DDRM"
+          >Dossier Départemental des Risques Majeurs (74)</a
+        >, 2022.
+      </li>
+      <li>
+        Arrêté CATNAT Vauzy :
+        <ul>
+          <li>
+            Services de l'État en Haute-Savoie,
+            <a
+              href="https://www.haute-savoie.gouv.fr/contenu/telechargement/33242/196394/file/CatNatArretes74_21102024.pdf"
+              >Reconnaissance de l'état de catastrophe naturelle (liste des
+              arrêtés par commune)</a
+            >, consulté le 20/12/2024.
+          </li>
+          <li>
+            Service public de la diffusion du droit,
+            <a
+              href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048052860"
+              >Arrêté du 21 juillet 2023 portant reconnaissance de l'état de
+              catastrophe naturelle</a
+            >, consulté le 20/12/2024.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Les services de l'État en Haute-Savoie,
+        <a
+          href="https://www.haute-savoie.gouv.fr/Actions-de-l-Etat/Prevenir-le-risque-et-se-proteger/Risques-technologiques/Industrie/En-Haute-Savoie"
+          >Le risque industriel dans le département</a
+        >, consulté le 15/12/2024.
+      </li>
+    </ul>
+
+    <!--FOOTER-->
+    <footer class="py-3 my-4">
+      <p class="text-center text-body-secondary">
+        © 2024 Zoé Poirier, Julie Chartier
+      </p>
+    </footer>
+
+    <script src="resources/qgis2web_expressions.js"></script>
+    <script src="./resources/functions.js"></script>
+    <script src="./resources/ol.js"></script>
+    <script src="./resources/ol-layerswitcher.js"></script>
+    <script src="layers/REGION_1.js"></script>
+    <script src="layers/DEPARTEMENT_2.js"></script>
+    <script src="layers/COMMUNE_3.js"></script>
+    <script src="layers/haute_savoie_fond_5.js"></script>
+    <script src="layers/COURS_D_EAU_6.js"></script>
+    <script src="layers/PLAN_D_EAU_7.js"></script>
+    <script src="layers/haute_savoie_contour_8.js"></script>
+    <script src="styles/REGION_1_style.js"></script>
+    <script src="styles/DEPARTEMENT_2_style.js"></script>
+    <script src="styles/COMMUNE_3_style.js"></script>
+    <script src="styles/haute_savoie_fond_5_style.js"></script>
+    <script src="styles/COURS_D_EAU_6_style.js"></script>
+    <script src="styles/PLAN_D_EAU_7_style.js"></script>
+    <script src="styles/haute_savoie_contour_8_style.js"></script>
+    <script src="./layers/layers.js" type="text/javascript"></script>
+    <script src="./resources/Autolinker.min.js"></script>
+    <script src="./resources/qgis2web.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
