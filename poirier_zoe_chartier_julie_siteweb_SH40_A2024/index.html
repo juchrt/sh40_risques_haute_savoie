@@ -49,7 +49,9 @@
       <p>
         Ce travail se situe dans le contexte de l'<i
           >UV SH40 - Les Risques : entre technique et société</i
-        >, dispensée à l'UTC par Johan Desbonnet. Il est disponible
+        >, dispensée à l'UTC par Johan Desbonnet. Il a été réalisé par Julie
+        Chartier et Zoé Poirier, étudiantes en Génie Informatique et est
+        disponible
         <a href="https://juchrt.github.io/sh40_risques_haute_savoie/"
           >en ligne</a
         >
@@ -84,7 +86,6 @@
           >.
         </li>
       </ul>
-      <br />
       <p>
         Nous avons choisi de nous intéresser au département de la Haute-Savoie
         premièrement car nous sommes toutes deux intéressées par le milieu
@@ -103,7 +104,7 @@
         <li><b>Départements limitrophes :</b> Ain (01), Savoie (73).</li>
         <li><b>Pays limitrophes :</b> Suisse, Italie.</li>
         <li>
-          <b>Particularité :</b> Département montagneux
+          <b>Particularité :</b> Département montagneux, tourisme.
           <ul>
             <li>
               <b>Altitude minimum :</b> 250m au-dessus du niveau de la mer.
@@ -135,7 +136,7 @@
 
       <h3>Les sources</h3>
       <p>
-        Le Dossier Départemental des Risques Majeurs (édition 2022) est le
+        Le Dossier Départemental des Risques Majeurs (DDRM, édition 2022) est le
         principal support sur lequel nous nous appuyons pour construire notre
         MCD.
       </p>
@@ -146,8 +147,8 @@
         impactent le territoire. Dans ce modèle conceptuel de données, nous
         avons fait le choix de ne détailler (avec leurs attributs) que 6 aléas
         clés : séisme, mouvement de terrain, inondation, avalanche, pollution,
-        glaciaire et périglaciaire. Ces aléas sont particulièrement spécifiques
-        au département, nous avons donc choisi de développer ceux-ci dans un
+        glaciaire/périglaciaire. Ces aléas sont particulièrement spécifiques au
+        département, nous avons donc choisi de développer ceux-ci dans un
         premier temps et de faire figurer ceux avec lesquels ils interagissent
         mais de façon moins développée. Sans cette sélection, le modèle aurait
         été surchargé et aurait empêché une bonne lisibilité et accessibilité.
@@ -198,18 +199,11 @@
     </div>
 
     <!-- CARTES -->
-    <!--<div id="map" style="width: 75rem">
-      <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>
-      </div>
-    </div>-->
-
     <div class="container">
       <br />
       <h3>
-        Carte zoom de la couverture en DICRIMs par rapport au nombre de catnat
-        par communes
+        Représentation de la couverture en DICRIMs par rapport au nombre
+        d'arrêtés CATNAT par commune
       </h3>
       <img
         src="./images/Disponibilité des DICRIM et communes concernées par des arrêtés CATNAT en Haute-Savoie.svg"
@@ -229,11 +223,11 @@
         communes de la Haute-Savoie à l'exception d'une seule (Vanzy) sont
         concernées par un arrêté de reconnaissance d'état de catastrophe
         naturelle et que seulement une partie des communes du département sont
-        couvertes par un DICRIM (135 communes sur 279 soit seulement 48,4 %).
-        Les DICRIMs, lorsqu'ils sont présents, sont une information à
-        destination des populations locales et n'atteignent que rarement les
-        touristes attirés par les paysages et les sports d'hiver, les rendant
-        d'autant plus vulnérables.
+        couvertes par un DICRIM (135 communes sur 279 soit seulement 48,4%). Les
+        DICRIMs, lorsqu'ils sont présents, sont une information à destination
+        des populations locales et n'atteignent que rarement les touristes
+        attirés par les paysages et les sports d'hiver, les rendant d'autant
+        plus vulnérables.
       </p>
       <p>
         Nous avons voulu vérifier qu'aucun arrêté CATNAT ne concernait la
@@ -274,21 +268,18 @@
         légitimement nous interroger aussi sur nos résultats concernant la
         couverture en DICRIM du territoire.
       </p>
-    </div>
-
-    <div class="container">
       <br />
-      <h3>Carte cas d'étude des aléas hydrographiques à Annecy</h3>
+      <h3>Représentations du cas d'étude des aléas hydrographiques à Annecy</h3>
       <p>
-        Nous avons ensuite choisi de faire un focus sur un des aléas de
+        Nous avons ensuite choisi de nous concentrer sur un des aléas de
         Haute-Savoie et de l'examiner sur une commune en particulier. Nous avons
         sélectionné Annecy car elle rassemble plusieurs facteurs intéressants
         liés à notre problématique. Tout d'abord, elle est la ville la plus
         grande et plus peuplée de Haute-Savoie (132 000 habitants). Située dans
         la vallée de l'Isère, elle présente des caractéristiques géographiques
-        typiques des régions montagnardes. EN effet, elle est entourée de
+        typiques des régions montagnardes. En effet, elle est entourée de
         montagnes, notamment les Montagnes de l'Avant-Pays à l'ouest et les
-        Aravis à l'est. D'un point de vur hydrographique, elle est célèbre pour
+        Aravis à l'est. D'un point de vue hydrographique, elle est célèbre pour
         son lac (d'Annecy) mais est aussi traversée par des canaux (cf Petite
         Venise des Alpes). En raison de son hydrographie particulière, nous
         avons décidé de nous intéresser aux risques d'inondations et crues dans
@@ -338,8 +329,9 @@
         zoom sur une partie de la ville. Sur cette carte, nous avons ajouté une
         zone tampon de 100m autour du Thiou qui correspond aux zones basses
         d'Annecy afin de déterminer quels sont les bâtiments vulnérables qui
-        seraient impactés par de possible inondations. Les bâtiments vulnérables
-        sont les bâtiments accueillant du public : écoles, hôpitaux, etc.
+        seraient impactés par de possibles inondations. Les bâtiments
+        vulnérables sont les bâtiments accueillant du public : écoles, hôpitaux,
+        etc.
       </p>
       <img
         src="./images/annecy_quartier.png"
@@ -432,16 +424,16 @@
         ouvertures possibles.<br />
         Tout d'abord, il peut être intéressant de compléter notre propos en
         finissant notre début de représentation de la commune de
-        Chamonix-Mont-Blanc avec notamment les interractions des aléas
+        Chamonix-Mont-Blanc avec notamment les interactions des aléas
         inondation, mouvements de terrain, avalanche, glaciaire et
-        périglaciaire, en étudiant notamment l'impact des changements
-        climatiques sur la région.
+        périglaciaire, en étudiant l'impact des changements climatiques sur la
+        région.
       </p>
       <p>
         Dans un second temps, si la disponibilité des données le permet, une
         représentation des mêmes types d'aléas ainsi que la gestion du risque
         dans les pays limitrophes que sont la Suisse et l'Italie peut être
-        pertinent non seulement à titre de comparaison mais aussi pour
+        pertinente non seulement à titre de comparaison mais aussi pour
         comprendre ce que les pays pourraient apprendre de leurs voisins.
       </p>
     </div>
@@ -471,7 +463,7 @@
           >, 2022.
         </li>
         <li>
-          Arrêté CATNAT Vauzy :
+          Arrêté CATNAT Vanzy :
           <ul>
             <li>
               Services de l'État en Haute-Savoie,
